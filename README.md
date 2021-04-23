@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.9.
 
+###### Latest deploy
+
+https://foodorder-311611.uc.r.appspot.com/
+
 ![image](./images/menu-page.png)
 
 ###### Overall view
@@ -30,6 +34,8 @@ Note: Assuming side dish is required to go with the main item
 
 - Hardcoded requirements (currently in food-form components) should be replaced with proper API call or be relocated in other json files.
 - Edit and Delete item from Cart could be added. (Potentially adding Mode into food-summary component) 
+- Validator Error Messages Display
+- More Strict Range on Baked Potato Number
 
 ## Development server
 
