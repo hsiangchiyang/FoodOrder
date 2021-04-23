@@ -3,11 +3,11 @@
     <h1 ><strong> Food Order </strong></h1>
     <hr>
     <hr>
-    <div *ngIf="!summary" class="summary">
+    <div *ngIf="state == 'ordering'" class="summary">
       <app-order-form (onFormGroupChange)="updateSummary($event)"></app-order-form>
     </div>
     <br>
-    <div *ngIf="summary" class="summary">
+    <div *ngIf="state == 'summary'" class="summary">
       <h3> Order Summary </h3>
       <app-food-summary [items]="summary.cart"></app-food-summary>
       <br>

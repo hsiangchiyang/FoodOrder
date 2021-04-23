@@ -35,7 +35,7 @@ export class FoodModalComponent implements OnInit {
     }
   }
   // Output Foodform to Parent
-  pushitem(event: any){
+  pushFood(event: any){
     console.log(event);
     this.onFormGroupChange.emit(event);
     this.modalService.dismissAll();

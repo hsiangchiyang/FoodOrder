@@ -23,15 +23,15 @@ export class FoodFormComponent implements OnInit {
       'sides' : ['Salads', 'Baked Potato']
     }
   };
-  side_list:  {[index: string]: any}  = {
+  side_list: {[index: string]: any}  = {
     'Salads': { 'options': ['caesar', 'balsamic']},
     'Baked Potato': { 'options': 'number'},
     'Fries': { 'options': ['small', 'large']}
   };
 
   // Local variable
-  cur_item: any;
-  selectoptions: any;
+  curItem: any;
+  selectOption: any;
 
   // Initialize Reactive Form
   foodForm = this.fb.group({
@@ -52,7 +52,7 @@ export class FoodFormComponent implements OnInit {
 
   ngOnInit(): void {
     // Get Reference by itemType name
-    this.cur_item = this.major_list[this.itemType];
+    this.curItem = this.major_list[this.itemType];
     this.foodForm.get('itemtype')?.patchValue( this.itemType);
   }
 
@@ -73,7 +73,7 @@ export class FoodFormComponent implements OnInit {
   }
 
   updateOptions(){
-    this.selectoptions = this.side_list[this.side.get('sideType')?.value].options;
+    this.selectOption = this.side_list[this.side.get('sideType')?.value].options;
     this.side.get('option')?.reset();
   }
 

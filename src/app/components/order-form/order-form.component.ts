@@ -10,7 +10,6 @@ export class OrderFormComponent implements OnInit {
   @Output() private onFormGroupChange = new EventEmitter<any>();
   // Item list
   items = ['Burger', 'Steak'];
-  itemselected = '';
 
   orderForm = this.fb.group({
     cart: this.fb.array([
@@ -24,16 +23,13 @@ export class OrderFormComponent implements OnInit {
   get cart(){
     return this.orderForm.get('cart') as FormArray;
   }
-  openItem(item: string){
-    this.itemselected = item;
-  }
+
   addItem(event: any) {
     console.log(event.value);
     this.cart.push(this.fb.control(event.value));
-    this.itemselected = '';
   }
   onSubmit() {
-    console.warn(this.orderForm.value);
+    console.log(this.orderForm.value);
     if (this.orderForm.valid){
       console.log("Order Form Submitted");
       this.onFormGroupChange.emit(this.orderForm);

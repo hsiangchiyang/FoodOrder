@@ -6,7 +6,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <app-food-form [itemType]="itemType" (onFormGroupChange)="pushitem($event)"></app-food-form>
+    <app-food-form [itemType]="itemType" (onFormGroupChange)="pushFood($event)"></app-food-form>
   </div>
 </ng-template>
 <button class="btn btn-lg btn-outline-primary" (click)="open(content)">{{itemType}}</button>

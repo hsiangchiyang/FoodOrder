@@ -1,15 +1,15 @@
 <div class="foodform">
   <form [formGroup]="foodForm" (ngSubmit)="onSubmit()">
-    <div *ngIf="cur_item.doneness" class="form-group required" id="doneness">
+    <div *ngIf="curItem.doneness" class="form-group required" id="doneness">
       <h5>Doneness:</h5>
         <select class="form-control" formControlName="doneness"  type="text" >
-            <option *ngFor="let level of cur_item.doneness" [value]="level">{{level}}</option>
+            <option *ngFor="let level of curItem.doneness" [value]="level">{{level}}</option>
         </select>
     </div>
 
-    <div *ngIf="cur_item.condimentsOptions" class="form-group" id="condiments">
+    <div *ngIf="curItem.condimentsOptions" class="form-group" id="condiments">
       <h5>Condiments:</h5>
-      <div *ngFor="let choice of cur_item.condimentsOptions" formArrayName="condiments">
+      <div *ngFor="let choice of curItem.condimentsOptions" formArrayName="condiments">
         <label class="form-label">
           <input type="checkbox" (change)="condimentsChange($event)" [value]="choice">
           {{choice}}
@@ -17,20 +17,20 @@
       </div>
     </div>
 
-    <div *ngIf="cur_item.sides" class="form-group required" id="side">
+    <div *ngIf="curItem.sides" class="form-group required" id="side">
       <h5>Choice of sides:</h5>
       <div formGroupName="side">
         <select class="form-control" formControlName="sideType" type="text" (change)="updateOptions()">
-          <option *ngFor="let choice of cur_item.sides" [value]="choice">{{choice}}</option>
+          <option *ngFor="let choice of curItem.sides" [value]="choice">{{choice}}</option>
         </select>
         <!--        different cases for side options-->
-        <div *ngIf="selectoptions" class="options">
-          <p *ngIf="selectoptions != 'number'"> Options:
+        <div *ngIf="selectOption" class="options">
+          <p *ngIf="selectOption != 'number'"> Options:
             <select  class="form-control" formControlName="option"  type="text" >
-              <option *ngFor="let choice of selectoptions" [value]="choice">{{choice}}</option>
+              <option *ngFor="let choice of selectOption" [value]="choice">{{choice}}</option>
             </select>
           </p>
-          <p *ngIf="selectoptions === 'number'"> Number: <input  formControlName="option" type="text"></p>
+          <p *ngIf="selectOption === 'number'"> Number: <input  formControlName="option" type="text"></p>
         </div>
       </div>
     </div>

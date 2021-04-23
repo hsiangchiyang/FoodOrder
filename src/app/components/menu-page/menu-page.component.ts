@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuPageComponent implements OnInit {
 
+  // Tracking steps in menu page
+  state: string = 'ordering';
   summary: any;
 
   constructor() { }
@@ -17,5 +19,6 @@ export class MenuPageComponent implements OnInit {
   updateSummary(event: any): void{
     console.log(event.value);
     this.summary = event.value;
+    this.state = 'summary';
   }
 }
