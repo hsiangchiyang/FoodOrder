@@ -1,0 +1,21 @@
+<h3 > Add Major Items</h3>
+<div *ngFor="let item of items">
+  <button style="display:inline-block;" class="itemButton" (click)="openItem(item)">{{item}}</button>
+  <div *ngIf="itemselected == item" class="card">
+    <div class="card-body">
+      <app-food-form [itemType]="item" (onFormGroupChange)="addItem($event)"></app-food-form>
+    </div>
+  </div>
+</div>
+<hr>
+<form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+  <div formArrayName="cart">
+    <h3>Cart</h3>
+    <app-food-summary [items]="cart.value"></app-food-summary>
+  </div>
+  <br>
+  <!--  debug logging -->
+<!--  <p>Form value: {{ orderForm.value | json}}</p>-->
+<!--  <p>Form Status: {{ orderForm.status }}</p>-->
+  <button type="submit" [disabled]="!orderForm.valid">Submit</button>
+</form>

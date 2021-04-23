@@ -1,0 +1,16 @@
+<ul class="list-group" style="overflow-y:scroll; max-height: 400px; min-height: 100px; !important; border-style:outset">
+  <div *ngFor="let item of items; let i=index;">
+    <label>
+      Item <span>{{i+1}}</span></label>
+    <li  class="list-group-item" >
+      <a>Main: {{item.itemtype}}</a>
+      <br>
+      <a *ngIf="item.itemtype === 'Steak'"> Doneness: {{item.doneness}}</a>
+      <a *ngIf="item.itemtype === 'Burger'"> Condiments: {{item.condiments}}</a>
+      <br>
+      <a>Side: {{item.side.option}}, {{item.side.sideType}}</a>
+      <br>
+      <a *ngIf="item.specialRequest"> Special Request: {{item.specialRequest}}</a>
+    </li>
+  </div>
+</ul>

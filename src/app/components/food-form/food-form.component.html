@@ -1,0 +1,51 @@
+<div class="foodform">
+  <h2>New {{itemType}}</h2>
+  <!--  debug logging -->
+<!--  <h2>{{cur_item | json}}</h2>-->
+  <form [formGroup]="foodForm" (ngSubmit)="onSubmit()">
+
+    <div *ngIf="cur_item.doneness" class="form-group" id="doneness">
+      <h5>Doneness:</h5>
+        <select class="form-control" formControlName="doneness"  type="text" >
+            <option *ngFor="let level of cur_item.doneness" [value]="level">{{level}}</option>
+        </select>
+    </div>
+
+    <div *ngIf="cur_item.condimentsOptions" class="form-group" id="condiments">
+      <h5>Condiments:</h5>
+      <div *ngFor="let choice of cur_item.condimentsOptions" formArrayName="condiments">
+        <label class="form-label">
+          <input type="checkbox" (change)="condimentsChange($event)" [value]="choice">
+          {{choice}}
+        </label>
+      </div>
+    </div>
+
+    <div *ngIf="cur_item.sides" class="form-group" id="side">
+      <h5>Choice of sides:</h5>
+      <div formGroupName="side">
+        <select class="form-control" formControlName="sideType" type="text" (change)="updateOptions()">
+          <option *ngFor="let choice of cur_item.sides" [value]="choice">{{choice}}</option>
+        </select>
+        <!--        different cases for side options-->
+        <div *ngIf="selectoptions" class="options">
+          <p *ngIf="selectoptions != 'number'"> Options:
+            <select  class="form-control" formControlName="option"  type="text" >
+              <option *ngFor="let choice of selectoptions" [value]="choice">{{choice}}</option>
+            </select>
+          </p>
+          <p *ngIf="selectoptions === 'number'"> Number: <input  formControlName="option" type="text"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" id="specialRequest">
+      <h5>Special Request:</h5>
+      <textarea class="form-control" type="text" style="white-space: pre-wrap;" rows="2" formControlName="specialRequest"></textarea>
+    </div>
+    <!--  debug logging -->
+    <p>Form value: {{ foodForm.value | json}}</p>
+    <p>Form Status: {{ foodForm.status }}</p>
+    <button type="submit" [disabled]="!foodForm.valid">Add</button>
+  </form>
+</div>
