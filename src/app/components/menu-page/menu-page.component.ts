@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu-page.component.css']
 })
 export class MenuPageComponent implements OnInit {
-  items: any = [ 'Burger', 'Steak'];
+
   summary: any;
 
   constructor() { }
@@ -18,5 +18,4 @@ export class MenuPageComponent implements OnInit {
     console.log(event.value);
     this.summary = event.value;
   }
-
 }

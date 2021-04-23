@@ -9,7 +9,7 @@ import {donenessValidator} from '../../validators/steak-doneness.directive';
   styleUrls: ['./food-form.component.css']
 })
 export class FoodFormComponent implements OnInit {
-  @Input() itemType: any = '';
+  @Input() itemType: string = '';
   @Output() private onFormGroupChange = new EventEmitter<any>();
 
   // Hard coded food options reference
@@ -85,5 +85,4 @@ export class FoodFormComponent implements OnInit {
       console.log("Food Form Invalid");
     }
   }
-
 }

@@ -1,5 +1,5 @@
 import {ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
-
+// Validating the input for potato is number
 export const potatoValidator: ValidatorFn = (control: AbstractControl):
     ValidationErrors | null => {
       const side = control.get('side')?.value;

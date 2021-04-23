@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -7,6 +7,8 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./food-modal.component.css']
 })
 export class FoodModalComponent implements OnInit {
+  @Input() itemType: string = '';
+  @Output() private onFormGroupChange = new EventEmitter<any>();
 
   ngOnInit(): void {
   }
@@ -32,5 +34,10 @@ export class FoodModalComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-
+  // Output Foodform to Parent
+  pushitem(event: any){
+    console.log(event);
+    this.onFormGroupChange.emit(event);
+    this.modalService.dismissAll();
+  }
 }

@@ -1,10 +1,6 @@
 <div class="foodform">
-  <h2>New {{itemType}}</h2>
-  <!--  debug logging -->
-<!--  <h2>{{cur_item | json}}</h2>-->
   <form [formGroup]="foodForm" (ngSubmit)="onSubmit()">
-
-    <div *ngIf="cur_item.doneness" class="form-group" id="doneness">
+    <div *ngIf="cur_item.doneness" class="form-group required" id="doneness">
       <h5>Doneness:</h5>
         <select class="form-control" formControlName="doneness"  type="text" >
             <option *ngFor="let level of cur_item.doneness" [value]="level">{{level}}</option>
@@ -21,7 +17,7 @@
       </div>
     </div>
 
-    <div *ngIf="cur_item.sides" class="form-group" id="side">
+    <div *ngIf="cur_item.sides" class="form-group required" id="side">
       <h5>Choice of sides:</h5>
       <div formGroupName="side">
         <select class="form-control" formControlName="sideType" type="text" (change)="updateOptions()">
@@ -44,8 +40,8 @@
       <textarea class="form-control" type="text" style="white-space: pre-wrap;" rows="2" formControlName="specialRequest"></textarea>
     </div>
     <!--  debug logging -->
-    <p>Form value: {{ foodForm.value | json}}</p>
-    <p>Form Status: {{ foodForm.status }}</p>
-    <button type="submit" [disabled]="!foodForm.valid">Add</button>
+<!--    <p>Form value: {{ foodForm.value | json}}</p>-->
+<!--    <p>Form Status: {{ foodForm.status }}</p>-->
+    <button class="btn btn-outline-dark" type="submit" [disabled]="!foodForm.valid">Add</button>
   </form>
 </div>

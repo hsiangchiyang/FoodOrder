@@ -1,11 +1,6 @@
 <h3 > Add Major Items</h3>
 <div *ngFor="let item of items">
-  <button style="display:inline-block;" class="itemButton" (click)="openItem(item)">{{item}}</button>
-  <div *ngIf="itemselected == item" class="card">
-    <div class="card-body">
-      <app-food-form [itemType]="item" (onFormGroupChange)="addItem($event)"></app-food-form>
-    </div>
-  </div>
+  <app-food-modal [itemType]="item" (onFormGroupChange)="addItem($event)"></app-food-modal>
 </div>
 <hr>
 <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
